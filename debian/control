@@ -7,11 +7,18 @@ Build-Depends: debhelper (>= 9),
 	       dh-python,
 	       python-all (>= 2.6.6-3),
 	       python-nose (>= 0.10.0b1),
-	       python-setuptools (>= 0.6b3)
+	       python-setuptools (>= 0.6b3),
+	       python-usb,
+	       python3-all (>= 2.6.6-3),
+	       python3-nose (>= 0.10.0b1),
+	       python3-setuptools (>= 0.6b3),
+	       python3-usb,
 Standards-Version: 3.9.8
 Homepage: https://developers.yubico.com/python-yubico/
 Vcs-Browser: https://github.com/Yubico/python-yubico-dpkg
 Vcs-Git: https://github.com/Yubico/python-yubico-dpkg.git
+X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.6
 
 Package: python-yubico
 Architecture: all
@@ -42,3 +49,13 @@ Description: Tools for Yubico YubiKeys
  This package currently includes the following utilities :
  .
    * yubikey-totp - OATH TOTP code generator using YubiKey
+
+Package: python3-yubico
+Architecture: all
+Depends: ${python3:Depends},
+	 ${misc:Depends},
+	 python3-usb
+Description: Python3 library for talking to Yubico YubiKeys
+ The YubiKey is a hardware authentication token. This is a Python
+ library for interacting with YubiKeys. Typical use is to detect,
+ configure (personalize) or issue challenge-responses to YubiKeys.

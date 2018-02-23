@@ -1,7 +1,13 @@
 #!/usr/bin/make -f
 
+export PYBUILD_NAME=yubico
+
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog
 
+override_dh_auto_test:
+	nosetests-2.7 -e test_challenge_response -e test_serial -e test_status
+	nosetests3 -e test_challenge_response -e test_serial -e test_status
+
 %:
-	dh $@ --with python2 --buildsystem=python_distutils
+	dh $@ --with python2,python3 --buildsystem=pybuild
